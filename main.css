@@ -1,0 +1,44 @@
+table#scoreblad caption {
+	font-size: 2rem; color: #444;
+	margin: 1rem;
+}
+
+table#scoreblad {
+	border-collapse: collapse;
+	font-family: Agenda-Light; font-weight: 100;
+	background: #333; color: #fff;
+	text-rendering: optimizeLegibility;
+	border-radius: 5px;
+}
+
+table#scoreblad thead th { font-weight: 600; }
+
+table#scoreblad thead th, table#scoreblad tbody td {
+	padding: .8rem; font-size: 1.4rem; 
+}
+
+table#scoreblad tbody td {
+	padding: .8rem; font-size: 1.4rem;
+	color: #444; background: #eee;
+}
+
+table#scoreblad tbody tr:not(:last-child) {
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd; 
+}
+
+@media screen and (max-width: 600px) {
+
+table#scoreblad thead { display: none; }
+
+table#scoreblad tbody td { display: block; padding: .6rem; }
+
+table#scoreblad tbody tr td:first-child { background: #333; color: #fff; }
+
+table#scoreblad tbody td:before {
+	content: attr(data-th); font-weight: bold;
+	display: inline-block; width: 6rem; 
+
+}
+
+}
