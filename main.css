@@ -27,6 +27,8 @@ table#scoreblad tbody tr:not(:last-child) {
 	border-bottom: 1px solid #ddd; 
 }
 
+table#scoreblad .deler { font-weight: bold; }
+
 @media screen and (max-width: 960px) {
 table#scoreblad caption { font-size: 2rem; }
 table#scoreblad tbody td { font-size: 1.4rem }

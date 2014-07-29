@@ -20,7 +20,7 @@
 <tr>
 	<td>start</td>
 	<td>0</td>
-	<td>0</td>
+	<td class="deler">0</td>
 	<td>0</td>
 	<td>0</td>
 	<td>0</td>
@@ -29,7 +29,7 @@
 	<td>vraag&nbsp;&amp;&nbsp;mee</td>
 	<td>-2</td>
 	<td>-2</td>
-	<td>0</td>
+	<td class="deler">0</td>
 	<td>2</td>
 	<td>2</td>
 </tr>
@@ -38,16 +38,16 @@
 	<td>8</td>
 	<td>8</td>
 	<td>-30</td>
-	<td>2</td>
+	<td class="deler">2</td>
 	<td>12</td>
 </tr>
-<tr>
+<tr id="last">
 	<td>abi&nbsp;troef</td>
 	<td>3</td>
 	<td>3</td>
 	<td>-15</td>
 	<td>-3</td>
-	<td>12</td>
+	<td class="deler">12</td>
 </tr>
 
 </tbody>
