@@ -1,9 +1,9 @@
-table#scoreblad caption {
+table caption {
 	font-size: 4rem; color: #444;
 	margin: 1rem;
 }
 
-table#scoreblad {
+table {
 	border-collapse: collapse;
 	font-family: Agenda-Light; font-weight: 100;
 	background: #333; color: #fff;
@@ -11,39 +11,39 @@ table#scoreblad {
 	border-radius: 5px;
 }
 
-table#scoreblad thead th { font-weight: 600; }
+table thead th { font-weight: 600; }
 
-table#scoreblad thead th, table#scoreblad tbody td {
+table thead th, table tbody td {
 	padding: .8rem; font-size: 2.8rem; 
 }
 
-table#scoreblad tbody td {
+table tbody td {
 	padding: .8rem; font-size: 2.8rem;
 	color: #444; background: #eee;
 }
 
-table#scoreblad tbody tr:not(:last-child) {
+table tbody tr:not(:last-child) {
 	border-top: 1px solid #ddd;
 	border-bottom: 1px solid #ddd; 
 }
 
-table#scoreblad .deler { font-weight: bold; }
+table .deler { font-weight: bold; }
 
 @media screen and (max-width: 960px) {
-table#scoreblad caption { font-size: 2rem; }
-table#scoreblad tbody td { font-size: 1.4rem }
-table#scoreblad thead th { font-size: 1.4rem }
+table caption { font-size: 2rem; }
+table tbody td { font-size: 1.4rem }
+table thead th { font-size: 1.4rem }
 }
 
 @media screen and (max-width: 600px) {
 
-table#scoreblad thead { display: none; }
+table thead { display: none; }
 
-table#scoreblad tbody td { display: block; padding: .6rem; }
+table tbody td { display: block; padding: .6rem; }
 
-table#scoreblad tbody tr td:first-child { background: #333; color: #fff; }
+table tbody tr td:first-child { background: #333; color: #fff; }
 
-table#scoreblad tbody td:before {
+table tbody td:before {
 	content: attr(data-th); font-weight: bold;
 	display: inline-block; width: 6rem; 
 
