@@ -106,7 +106,7 @@ $(function(){
       var lijnView = new LijnView({
         model: lijn
       });
-      $('table', this.el).append(lijnView.render().el);
+      $('tbody', this.el).append(lijnView.render().el);
     }
   });
 
