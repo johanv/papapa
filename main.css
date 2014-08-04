@@ -29,10 +29,28 @@ table tbody tr:not(:last-child) {
 
 table .deler { font-weight: bold; }
 
+fieldset {
+  font-size: 2.8rem;
+  float: left;
+}
+
+select {
+  font-size: 2.8rem;
+  float: left;
+}
+
+input[type=checkbox]
+{
+  font-size: 2.8rem;
+}
+
 @media screen and (max-width: 960px) {
 table caption { font-size: 2rem; }
 table tbody td { font-size: 1.4rem }
 table thead th { font-size: 1.4rem }
+fieldset { font-size: 1.4rem; }
+select { font-size: 1.4rem; }
+input[type=checkbox]{ font-size: 1.4rem; }
 }
 
 @media screen and (max-width: 600px) {
@@ -46,7 +64,6 @@ table tbody tr td:first-child { background: #333; color: #fff; }
 table tbody td:before {
 	content: attr(data-th); font-weight: bold;
 	display: inline-block; width: 6rem; 
-
 }
 
 }

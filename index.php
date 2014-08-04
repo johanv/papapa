@@ -20,6 +20,43 @@
 <div id="scoreblad">
 </div>
 
+<div id="result">
+<!-- Let's first mockup this thingy. -->
+<fieldset>
+<legend>trekt</legend>
+<input id="winner0" type="checkbox" name="winner" value="0" /><label for="winner0">Scr</label><br />
+<input id="winner1" type="checkbox" name="winner" value="1" /><label for="winner1">DVL</label><br />
+<input id="winner2" type="checkbox" name="winner" value="2" /><label for="winner2">DTL</label><br />
+<input id="winner3" type="checkbox" name="winner" value="3" /><label for="winner3">DLB</label><br />
+<input id="winner4" type="checkbox" name="winner" value="4" /><label for="winner4">Png</label><br />
+</fieldset>
+
+<fieldset>
+<legend>frang de man</legend>
+
+<select name="frangdeman"/>
+  <option value="1">1</option>
+  <option value="2" selected="selected">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="10">10</option>
+  <option value="15">15</option>
+  <option value="45">45</option>
+</select>
+</fieldset>
+
+<fieldset>
+<legend>betaalt</legend>
+<input id="loser0" type="checkbox" name="loser" value="0" /><label for="loser0">Scr</label><br />
+<input id="loser1" type="checkbox" name="loser" value="1" /><label for="loser1">DVL</label><br />
+<input id="loser2" type="checkbox" name="loser" value="2" /><label for="loser2">DTL</label><br />
+<input id="loser3" type="checkbox" name="loser" value="3" /><label for="loser3">DLB</label><br />
+<input id="loser4" type="checkbox" name="loser" value="4" /><label for="loser4">Png</label><br />
+</fieldset>
+</div>
+
 <script>
 $(function(){
   var Lijn = Backbone.Model.extend({
@@ -37,6 +74,15 @@ $(function(){
       dubbels: [],
       deler: 0,
       scores: [0, 0, 0, 0, 0] // we spelen met een pisser
+    }
+  });
+
+  var Result = Backbone.Model.extend({
+    defaults: {
+      players: ['Scr', 'DVL', 'DTL', 'DLB', 'Png'],
+      winners: [],
+      losers: [],
+      points: 2,
     }
   });
 
@@ -90,7 +136,7 @@ $(function(){
 
       // Die header zal uiteraard ook dynamisch moeten
       $(this.el).append("<button id='add'>Add line</button>");
-      $(this.el).append('<table id="scoreblad"> <caption>Scoreblad</caption> <thead> <tr><th>Spel</th><th>Scr</th><th>DVL</th><th>DTL</th><th>DLB</th><th>Png</th></tr> </thead> <tbody> </tbody> </table>');
+      $(this.el).append('<table> <caption>Scoreblad</caption> <thead> <tr><th>Spel</th><th>Scr</th><th>DVL</th><th>DTL</th><th>DLB</th><th>Png</th></tr> </thead> <tbody> </tbody> </table>');
 
       _(this.collection.models).each(function(lijn){
         self.appendLijn(lijn);
@@ -109,6 +155,21 @@ $(function(){
       $('tbody', this.el).append(lijnView.render().el);
     }
   });
+
+  var ResultView = Backbone.View.extend({
+    el: $('div#result'),
+
+    initialize: function(){
+      _.bindAll(this, 'render');
+
+      this.render();
+    },
+
+    render: function(){
+      // TODO: render view
+    }
+  });
+
 
   var bladView = new BladView();
 }());
