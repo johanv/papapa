@@ -36,10 +36,9 @@ fieldset {
 
 select {
   font-size: 2.8rem;
-  float: left;
 }
 
-input[type=checkbox]
+input
 {
   font-size: 2.8rem;
 }
@@ -50,7 +49,7 @@ table tbody td { font-size: 1.4rem }
 table thead th { font-size: 1.4rem }
 fieldset { font-size: 1.4rem; }
 select { font-size: 1.4rem; }
-input[type=checkbox]{ font-size: 1.4rem; }
+input { font-size: 1.4rem; }
 }
 
 @media screen and (max-width: 600px) {
