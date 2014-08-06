@@ -42,6 +42,7 @@
   <option>5</option>
   <option>6</option>
   <option>10</option>
+  <option>20</option>
   <option>14</option>
   <option>15</option>
   <option>30</option>
@@ -69,7 +70,6 @@ $(function(){
   var Lijn = Backbone.Model.extend({
     defaults: {
       nr: 0,
-      spel: 'dummy',
       // dubbels zal het nifty systeem worden om te kijken hoe vaak de punten
       // in deze lijn verdubbeld worden, en of er in de volgende spelletjes ook
       // dubbel gespeeld zal worden. Hiervoor ga ik gebruik maken van de lijn-
@@ -80,6 +80,7 @@ $(function(){
       // vandaar dat 14 er twee keer in staat.
       dubbels: [],
       deler: 0,
+      troel: false,
       scores: [0, 0, 0, 0, 0] // we spelen met een pisser
     }
   });
@@ -108,7 +109,7 @@ $(function(){
       // I am not sure why I am doing this:
       var self = this;
 
-      this.appendCell(this.model.get('spel'));
+      this.appendCell('');
       _(this.model.get('scores')).each(function(score){
         self.appendCell(score);
       }, this);
@@ -143,7 +144,7 @@ $(function(){
 
       // Die header zal uiteraard ook dynamisch moeten
       $(this.el).append("<button id='add'>Add line</button>");
-      $(this.el).append('<table> <caption>Scoreblad</caption> <thead> <tr><th>Spel</th><th>Scr</th><th>DVL</th><th>DTL</th><th>DLB</th><th>Png</th></tr> </thead> <tbody> </tbody> </table>');
+      $(this.el).append('<table> <caption>Scoreblad</caption> <thead> <tr><th>Opm.</th><th>Scr</th><th>DVL</th><th>DTL</th><th>DLB</th><th>Png</th></tr> </thead> <tbody> </tbody> </table>');
 
       _(this.collection.models).each(function(lijn){
         self.appendLijn(lijn);
