@@ -8,7 +8,6 @@ var AppRouter = Backbone.Router.extend({
     // Add some default players for now.
     // (The thing below does not work)
 
-    /*
     for (i = 1; i <= 4; ++i) {
       var player = new Player();
       player.set({
@@ -16,7 +15,6 @@ var AppRouter = Backbone.Router.extend({
       });
       this.players.add(player);
     }
-    */
   },
 
   // no routes for the moment
@@ -37,7 +35,7 @@ Player = Backbone.Model.extend({
   }
 });
 
-PlayerCollection = Backbone.Model.extend({
+PlayerCollection = Backbone.Collection.extend({
   model: Player
 });
 
@@ -48,7 +46,7 @@ PlayerCheckboxView = Backbone.View.extend({
     _.bindAll(this, "render");
   },
   render: function() {
-    var content = this.template.tmpl(this.model.toJSON());
+    var content = this.template(this.model.toJSON());
     $(this.el).html(content);
     return this;
   }
@@ -66,9 +64,14 @@ AddResultView = Backbone.View.extend({
 
   render: function() {
     $(this.el).html(this.template());
-    _.each(this.collection.players, function(model){
+
+    // I think we need to copy 'this' to 'self', because
+    // when the callback function is executed, 'this' will be gone.
+
+    self = this;
+    _.each(this.collection.models, function(model){
       var view = new PlayerCheckboxView({model: model});
-      $(this.el).find("#winners").append(view);
+      $(self.el).find("#winners").append(view.render().el);
     });
     return this;
   }
