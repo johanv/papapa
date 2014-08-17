@@ -41,8 +41,21 @@ PlayerCollection = Backbone.Collection.extend({
   model: Player
 });
 
-PlayerCheckboxView = Backbone.View.extend({
+PlayerWinCheckboxView = Backbone.View.extend({
   template: _.template($('#playerWinCheckbox').html()),
+  initialize: function() {
+    // clueless again.
+    _.bindAll(this, "render");
+  },
+  render: function() {
+    var content = this.template(this.model.toJSON());
+    $(this.el).html(content);
+    return this;
+  }
+});
+
+PlayerLooseCheckboxView = Backbone.View.extend({
+  template: _.template($('#playerLooseCheckbox').html()),
   initialize: function() {
     // clueless again.
     _.bindAll(this, "render");
@@ -72,8 +85,10 @@ AddResultView = Backbone.View.extend({
 
     self = this;
     _.each(this.collection.models, function(model){
-      var view = new PlayerCheckboxView({model: model});
-      $(self.el).find("#winners").append(view.render().el);
+      var view1 = new PlayerWinCheckboxView({model: model});
+      $(self.el).find("#winners").append(view1.render().el);
+      var view2 = new PlayerLooseCheckboxView({model: model});
+      $(self.el).find("#losers").append(view2.render().el);
     });
     return this;
   }
