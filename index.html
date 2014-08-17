@@ -24,8 +24,11 @@
   </form>
 </script>
 
-<script type="text/template" id="playerCheckbox">
-  <input class="check" type="checkbox" /><%= code%><br />
+<script type="text/template" id="playerWinCheckbox">
+  <input class="check" type="checkbox"
+    id="winner<%= id%>"
+    <%= (wins > 0) ? 'checked="checked"':'' %> />
+  <label for="winner<%= id%>"><%= code%></label><br />
 </script>
 
 <script src="scripts/lib/jquery-2.0.3.js"></script>

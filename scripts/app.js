@@ -11,7 +11,8 @@ var AppRouter = Backbone.Router.extend({
     for (i = 1; i <= 4; ++i) {
       var player = new Player();
       player.set({
-        code: 'P' + i
+        code: 'P' + i,
+        id: i,
       });
       this.players.add(player);
     }
@@ -30,6 +31,7 @@ var AppRouter = Backbone.Router.extend({
 
 Player = Backbone.Model.extend({
   defaults: {
+    id: 0,
     code: 'XXX',
     wins: 0, // -1: loses, 0 nothing, 1 wins
   }
@@ -40,7 +42,7 @@ PlayerCollection = Backbone.Collection.extend({
 });
 
 PlayerCheckboxView = Backbone.View.extend({
-  template: _.template($('#playerCheckbox').html()),
+  template: _.template($('#playerWinCheckbox').html()),
   initialize: function() {
     // clueless again.
     _.bindAll(this, "render");
