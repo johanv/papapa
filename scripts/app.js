@@ -43,27 +43,45 @@ PlayerCollection = Backbone.Collection.extend({
 
 PlayerWinCheckboxView = Backbone.View.extend({
   template: _.template($('#playerWinCheckbox').html()),
+  events: {
+    'click input.check': 'check',
+  },
   initialize: function() {
     // clueless again.
-    _.bindAll(this, "render");
+    _.bindAll(this, "render", "check");
+
+    this.model.bind('change', this.render);
   },
   render: function() {
     var content = this.template(this.model.toJSON());
     $(this.el).html(content);
     return this;
+  },
+  check: function() {
+    // toggle between win and neutral.
+    this.model.set({wins: this.model.get('wins') <= 0 ? 1 : 0});
   }
 });
 
 PlayerLooseCheckboxView = Backbone.View.extend({
   template: _.template($('#playerLooseCheckbox').html()),
+  events: {
+    'click input.check': 'check',
+  },
   initialize: function() {
     // clueless again.
     _.bindAll(this, "render");
+
+    this.model.bind('change', this.render);
   },
   render: function() {
     var content = this.template(this.model.toJSON());
     $(this.el).html(content);
     return this;
+  },
+  check: function() {
+    // toggle between loose and neutral.
+    this.model.set({wins: this.model.get('wins') >= 0 ? -1 : 0});
   }
 });
 
