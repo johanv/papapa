@@ -4,6 +4,7 @@ var AppRouter = Backbone.Router.extend({
   initialize: function() {
     this.players = new PlayerCollection();
     this.addResultView = new AddResultView({collection: this.players});
+    this.bladView = new BladView(/* todo model */);
 
     // Add some default players for now.
     // (The thing below does not work)
@@ -25,7 +26,10 @@ var AppRouter = Backbone.Router.extend({
 
   index: function() {
     //this.addResultView.render();
+    // TODO: Ik kan er maar 1 renderen!
+    // (dat valt wel te fixen, want ik heb ook 2 views in result)
     $('#result').html(this.addResultView.render().el);
+    //$('#scoreblad').html(this.bladView.render().el);
   }
 });
 
@@ -87,7 +91,6 @@ PlayerLooseCheckboxView = Backbone.View.extend({
 
 AddResultView = Backbone.View.extend({
   tagName: "div",
-  className: "div",
   template: _.template($('#resultInput').html()),
   initialize: function() {
     // no clue about this:
@@ -110,6 +113,19 @@ AddResultView = Backbone.View.extend({
     });
     return this;
   }
+});
+
+var BladView = Backbone.View.extend({
+  tagname: "div",
+  template: _.template($('#scoreTable').html()),
+  initialize: function(){
+    //this.collection = new Blad();
+    _.bindAll(this, "render");
+  },
+  render: function() {
+    $(this.el).html(this.template());
+    return this;
+  },
 });
 
 appRouter = new AppRouter();

@@ -20,10 +20,14 @@
     <fieldset id="winners">
       <legend>trekt</legend>
     </fieldset>
+    <fieldset id="fangdeman">
+      <legend>frangdeman</legend>
+      <input type="number" name="winst" min="1" max="200" value="2" />
+      <button id="addResult">Noteer</button>
+    </fieldset>
     <fieldset id="losers">
       <legend>betaalt</legend>
     </fieldset>
-    <button id="addResult">Save</button>
   </form>
 </script>
 
@@ -39,6 +43,16 @@
     id="loser<%= id%>"
     <%= (wins < 0) ? 'checked="checked"':'' %> />
   <label for="loser<%= id%>"><%= code%></label><br />
+</script>
+
+<script type="text/template" id="scoreTable">
+<table> 
+<caption>Scoreblad</caption> 
+<thead> 
+<tr><th>Opm.</th><th>P1</th><th>P2</th><th>P3</th><th>P4</th></tr> 
+</thead> 
+<tbody> </tbody> 
+</table>
 </script>
 
 <script src="scripts/lib/jquery-2.0.3.js"></script>
