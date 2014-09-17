@@ -3,6 +3,8 @@
 You can ignore this project for now; I am just trying to
 learn backbone.js.
 
+The code is ugly. Because I am still clueless :-)
+
 In the best case, this webapp will somewhere in the future
 be usable for keeping track of the scores while playing
 whist. (4-6 players, 0, 1 or 2 'pissers').
