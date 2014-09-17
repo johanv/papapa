@@ -25,11 +25,10 @@ var AppRouter = Backbone.Router.extend({
   },
 
   index: function() {
-    //this.addResultView.render();
     // TODO: Ik kan er maar 1 renderen!
     // (dat valt wel te fixen, want ik heb ook 2 views in result)
-    $('#result').html(this.addResultView.render().el);
-    //$('#scoreblad').html(this.bladView.render().el);
+    $('#scoreblad').append(this.bladView.render().el);
+    $('#result').append(this.addResultView.render().el);
   }
 });
 
