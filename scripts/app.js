@@ -2,13 +2,15 @@
 var AppRouter = Backbone.Router.extend({
 
   initialize: function() {
+    // create models
     this.players = new PlayerCollection();
+    this.results = new ResultCollection();
+
     this.addResultView = new AddResultView({collection: this.players});
-    this.bladView = new BladView(/* todo model */);
+    this.bladView = new ResultsView({collection: this.results});
 
-    // Add some default players for now.
-    // (The thing below does not work)
-
+    // Add some sample data for now.
+    // players:
     for (i = 1; i <= 4; ++i) {
       var player = new Player();
       player.set({
@@ -17,6 +19,21 @@ var AppRouter = Backbone.Router.extend({
       });
       this.players.add(player);
     }
+    // results:
+    var result1 = new Result();
+    result1.set({
+      remark: "start",
+      scores: [0, 0, 0, 0],
+    });
+    this.results.add(result1);
+
+    var result2 = new Result();
+    result2.set({
+      remark: "vraag & mee",
+      scores: [2, 2, -2, -2],
+    });
+    this.results.add(result2);
+
   },
 
   // no routes for the moment
@@ -25,13 +42,12 @@ var AppRouter = Backbone.Router.extend({
   },
 
   index: function() {
-    // TODO: Ik kan er maar 1 renderen!
-    // (dat valt wel te fixen, want ik heb ook 2 views in result)
     $('#scoreblad').append(this.bladView.render().el);
     $('#result').append(this.addResultView.render().el);
   }
 });
 
+// Models
 Player = Backbone.Model.extend({
   defaults: {
     id: 0,
@@ -42,6 +58,17 @@ Player = Backbone.Model.extend({
 
 PlayerCollection = Backbone.Collection.extend({
   model: Player
+});
+
+Result = Backbone.Model.extend({
+  defaults: {
+    remark: "Blah",
+    scores: [0, 0, 0, 0],
+  }
+});
+
+ResultCollection = Backbone.Collection.extend({
+  model: Result,
 });
 
 PlayerWinCheckboxView = Backbone.View.extend({
@@ -114,15 +141,25 @@ AddResultView = Backbone.View.extend({
   }
 });
 
-var BladView = Backbone.View.extend({
+var ResultsView = Backbone.View.extend({
   tagname: "div",
   template: _.template($('#scoreTable').html()),
   initialize: function(){
-    //this.collection = new Blad();
     _.bindAll(this, "render");
   },
   render: function() {
     $(this.el).html(this.template());
+
+    self = this;
+
+    // this is way too ugly
+    _.each(this.collection.models, function(model){
+      table_line = "<tr><td>"+model.get("remark")+"</td>";
+      model.get("scores").forEach(function(score) {
+        table_line += "<td>"+score+"</td>";
+      });
+      $(self.el).find("tbody").append(table_line+"</tr>");
+    });
     return this;
   },
 });
